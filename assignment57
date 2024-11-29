@@ -1,1 +1,24 @@
+public class Main {
 
+    public static void main(String[] args) {
+        double tuition = 10000.0;
+        double rate = 1.05; // 5% increase rate
+
+        // Calculate tuition cost in ten years
+        for (int year = 0; year <= 9; year++) {
+            tuition *= rate;
+        }
+
+        double tuitionInTenYears = tuition;
+        System.out.printf("Tuition in ten years: $%.2f%n", tuitionInTenYears);
+
+        // Calculate total cost for four years starting from the tenth year
+        double totalCost = 0.0;
+        for (int year = 0; year < 4; year++) {
+            totalCost += tuition;
+            tuition *= rate;
+        }
+
+        System.out.printf("Total cost for four years after tenth year: $%.2f%n", totalCost);
+    }
+}
