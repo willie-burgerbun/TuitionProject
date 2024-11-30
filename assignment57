@@ -1,24 +1,29 @@
+import java.util.Scanner;
 public class Main {
-
     public static void main(String[] args) {
-        double tuition = 10000.0;
-        double rate = 1.05; // 5% increase rate
-
+        Scanner scanner = new Scanner(System.in);
+        // Prompting user for initial tuition 
+        System.out.print("Enter the initial tuition amount: ");
+        double tuition = scanner.nextDouble();
+        // Prompting user for rate
+        System.out.print("Enter the increase rate (as a decimal): ");
+        double rate = scanner.nextDouble();
         // Calculate tuition cost in ten years
-        for (int year = 0; year <= 9; year++) {
-            tuition *= rate;
+        for (int year = 1; year <= 10; year++) {
+            tuition *= (1 + rate);
         }
-
         double tuitionInTenYears = tuition;
         System.out.printf("Tuition in ten years: $%.2f%n", tuitionInTenYears);
-
-        // Calculate total cost for four years starting from the tenth year
+        // Store the tuition in a new variable for the four-year calculation
+        double fourYearTuition = tuition; 
         double totalCost = 0.0;
+        // Calculate total cost for four years starting from the tenth year
         for (int year = 0; year < 4; year++) {
-            totalCost += tuition;
-            tuition *= rate;
+            totalCost += fourYearTuition; // Use the new variable
+            fourYearTuition *= (1 + rate); // Increase the tuition for the next year
         }
-
         System.out.printf("Total cost for four years after tenth year: $%.2f%n", totalCost);
+        // Closing the scanner
+        scanner.close();
     }
 }
